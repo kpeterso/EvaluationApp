@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListBox x:Name="listBoxEval" HorizontalAlignment="Left" Height="223" Margin="84,191,0,0" VerticalAlignment="Top" Width="865"/>
 
     </Grid>
 </Page>

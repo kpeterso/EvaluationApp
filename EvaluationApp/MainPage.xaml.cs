@@ -116,6 +116,11 @@ namespace EvaluationApp
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Splitter.IsPaneOpen = !Splitter.IsPaneOpen;
+        }
+
         public enum NotifyType
         {
             StatusMessage,

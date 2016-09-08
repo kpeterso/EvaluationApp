@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Evaluation.cs" />
     <Compile Include="EvalDisplay.xaml.cs">
       <DependentUpon>EvalDisplay.xaml</DependentUpon>
     </Compile>
@@ -111,7 +112,7 @@
     <None Include="EvaluationApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EvaluationXml\XMLFile1.xml" />
+    <Content Include="EvaluationXml\Evaluations.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

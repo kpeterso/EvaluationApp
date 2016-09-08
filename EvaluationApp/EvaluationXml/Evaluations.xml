@@ -4,18 +4,18 @@
     <evalID>1</evalID>
     <driverName>Micheal Jackson</driverName>
     <vehicleName>Nissan Altima</vehicleName>
-    <evalType>1</evalType>
+    <evalType>Static Evaluation</evalType>
   </evaluation>
   <evaluation>
     <evalID>2</evalID>
     <driverName>Karl Peterson</driverName>
     <vehicleName>Toyota Camry</vehicleName>
-    <evalType>1</evalType>
+    <evalType>Static Evaluation</evalType>
   </evaluation>
   <evaluation>
     <evalID>3</evalID>
     <driverName>Josh Kucinski</driverName>
     <vehicleName>Nissan Rogue</vehicleName>
-    <evalType>1</evalType>
+    <evalType>Static Evaluation</evalType>
   </evaluation>
 </evaluations>
