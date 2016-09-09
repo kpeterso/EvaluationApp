@@ -8,7 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListBox x:Name="listBoxEval" HorizontalAlignment="Left" Height="223" Margin="84,191,0,0" VerticalAlignment="Top" Width="865"/>
-
+        <ListBox x:Name="listBoxEval" HorizontalAlignment="Left" Height="223" Margin="84,191,0,0" VerticalAlignment="Top" Width="865" ItemsSource="{x:Bind Evaluations}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Padding="5,0,5,0" Text="{Binding driverName}" />
+                        <TextBlock Padding="5,0,5,0" Text="{Binding vehicleName}" />
+                        <TextBlock Padding="5,0,5,0" Text="{Binding evalType}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

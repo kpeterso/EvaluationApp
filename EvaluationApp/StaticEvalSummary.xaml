@@ -1,0 +1,22 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EvaluationApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="EvaluationApp.StaticEvalSummary"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView x:Name="listViewObservations" HorizontalAlignment="Left" Height="264" Margin="0,376,0,0" VerticalAlignment="Top" Width="1024"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="321,0,0,0" TextWrapping="Wrap" Text="Evaluation Name" VerticalAlignment="Top" Height="67" Width="437" FontWeight="Bold" FontSize="48"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="52,130,0,0" TextWrapping="Wrap" Text="Driver:" VerticalAlignment="Top" Height="35" Width="57" FontSize="20"/>
+        <TextBlock x:Name="vehicleTitleBlock" HorizontalAlignment="Left" Margin="52,183,0,0" TextWrapping="Wrap" Text="Vehicle:" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="submitDateBlock" HorizontalAlignment="Left" Margin="52,230,0,0" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="driverInfoBlock" HorizontalAlignment="Left" Margin="160,135,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="160,188,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock2_Copy1" HorizontalAlignment="Left" Margin="160,237,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

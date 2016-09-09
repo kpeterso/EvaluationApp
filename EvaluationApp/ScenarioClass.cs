@@ -14,15 +14,5 @@ namespace EvaluationApp
         {
             return Title;
         }
-
-        public static async Task<Windows.Data.Xml.Dom.XmlDocument> LoadXmlFile(String folder, String file)
-        {
-            Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
-            Windows.Storage.StorageFile storageFile = await storageFolder.GetFileAsync(file);
-            Windows.Data.Xml.Dom.XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
-            loadSettings.ProhibitDtd = false;
-            loadSettings.ResolveExternals = false;
-            return await Windows.Data.Xml.Dom.XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
-        }
     }
 }

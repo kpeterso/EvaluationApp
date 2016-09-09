@@ -4,18 +4,51 @@
     <evalID>1</evalID>
     <driverName>Micheal Jackson</driverName>
     <vehicleName>Nissan Altima</vehicleName>
-    <evalType>Static Evaluation</evalType>
+    <evalType>Static Evaluatio/n</evalType>
+    <submitdate>02/08/2016 10:02:02.42</submitdate>
+    <observations>
+      <observation>
+        <comment>This car is great.</comment>
+        <timestamp>02/08/2016 06:05:02.42</timestamp>
+      </observation>
+      <observation>
+        <comment>The ride handling is a little rough. The shock absorbers are not damping out quickly enough</comment>
+        <timestamp>02/08/2016 07:05:07.47</timestamp>
+      </observation>
+    </observations>
   </evaluation>
   <evaluation>
     <evalID>2</evalID>
     <driverName>Karl Peterson</driverName>
     <vehicleName>Toyota Camry</vehicleName>
     <evalType>Static Evaluation</evalType>
+    <submitdate>03/02/2016 14:24:54.22</submitdate>
+    <observations>
+      <observation>
+        <comment>This car is great.</comment>
+        <timestamp>02/08/2016 08:07:02.56</timestamp>
+      </observation>
+      <observation>
+        <comment>The ride handling is a little rough. The shock absorbers are not damping out quickly enough</comment>
+        <timestamp>02/08/2016 09:09:05.09</timestamp>
+      </observation>
+    </observations>
   </evaluation>
   <evaluation>
     <evalID>3</evalID>
     <driverName>Josh Kucinski</driverName>
     <vehicleName>Nissan Rogue</vehicleName>
     <evalType>Static Evaluation</evalType>
+    <submitdate>09/09/2016 10:06:12.58</submitdate>
+    <observations>
+      <observation>
+        <comment>This car is great.</comment>
+        <timestamp>09/09/2016 06:07:07.09</timestamp>
+      </observation>
+      <observation>
+        <comment>The ride handling is a little rough. The shock absorbers are not damping out quickly enough</comment>
+        <timestamp>09/09/2016 07:07:07.07</timestamp>
+      </observation>
+    </observations>
   </evaluation>
 </evaluations>
