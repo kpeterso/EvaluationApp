@@ -7,7 +7,7 @@ using Windows.Data.Xml.Dom;
 
 namespace EvaluationApp
 {
-    class Evaluation
+    public class Evaluation
     {
 
         public string evalID { get; set; }
@@ -48,9 +48,14 @@ namespace EvaluationApp
             loadSettings.ResolveExternals = false;
             return await Windows.Data.Xml.Dom.XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
         }
+
+        public override string ToString()
+        {
+            return evalType;
+        }
     }
 
-    class Observation
+    public class Observation
     {
         public string comment { get; set; }
         public string timestamp { get; set; }

@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace EvaluationApp
 {
+
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>

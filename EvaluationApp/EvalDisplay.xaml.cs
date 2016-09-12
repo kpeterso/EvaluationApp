@@ -66,5 +66,17 @@ namespace EvaluationApp
             }
  
         }
+
+        private void button_openSummary_Click(object sender, RoutedEventArgs e)
+        {
+            //textBlock.Text = listBoxEval.SelectedItem.ToString();
+            var item = ((Evaluation)listBoxEval.SelectedItem).evalID;
+            switch (listBoxEval.SelectedItem.ToString())
+            {
+                case "Static Evaluation":
+                    this.Frame.Navigate(typeof(StaticEvalSummary), item);
+                    break;
+            }
+        }
     }
 }
