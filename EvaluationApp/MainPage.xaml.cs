@@ -26,7 +26,7 @@ namespace EvaluationApp
         List<Scenario> scenarios = new List<Scenario>
         {
             new Scenario() { Title = "Display List of Evaluations", ClassType = typeof(EvaluationApp.EvalDisplay) },
-            // new Scenario() { Title = "DOM Load/Save", ClassType = typeof(EvaluationApp.MarkHotProducts) },
+            new Scenario() { Title = "Create New Evaluation", ClassType = typeof(EvaluationApp.StaticEval) },
             // new Scenario() { Title = "Set Load Settings", ClassType = typeof(EvaluationApp.XmlLoading) },
             // new Scenario() { Title = "XPath Query", ClassType = typeof(EvaluationApp.GiftDispatch) },
             // new Scenario() { Title = "XSLT Transformation", ClassType = typeof(EvaluationApp.XSLTTransform) }

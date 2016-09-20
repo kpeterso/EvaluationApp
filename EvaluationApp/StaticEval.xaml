@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="EvaluationApp.StaticEval"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EvaluationApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="50" Margin="105,115,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="47" Margin="30,118,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
+        <ListView x:Name="listView_vehicle" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" Height="115" Margin="10,205,0,0" VerticalAlignment="Top" Width="340"/>
+        <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
+        <ListView x:Name="listView_Observations" Background="{ThemeResource ListViewItemPlaceholderBackground}" HorizontalAlignment="Left" Height="145" Margin="515,115,0,0" VerticalAlignment="Top" Width="465"/>
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="165" Margin="10,405,0,0" VerticalAlignment="Top" Width="1004">
+            <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Margin="0,0,0,-0.2" Width="85" Click="StartVoiceRecognition_Click"/>
+            <TextBox x:Name="textBox_comment" Margin="0,0,0,-0.2" Width="910"/>
+        </StackPanel>
+        <Button x:Name="SubmitObservationButton" Content="Submit" HorizontalAlignment="Left" Margin="365,607,0,0" VerticalAlignment="Top" Width="400"/>
+        <TextBox x:Name="textBox_title" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" Text="Static Evaluation" VerticalAlignment="Top" Width="1014" FontWeight="Bold" FontSize="24"/>
+        <TextBlock x:Name="textBlock_observationHeader" HorizontalAlignment="Left" Height="20" Margin="590,90,0,0" TextWrapping="Wrap" Text="Observations:" VerticalAlignment="Top" Width="175"/>
+
+    </Grid>
+</Page>
