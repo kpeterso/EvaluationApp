@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Data.Xml.Dom;
+using System.Collections.ObjectModel;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,35 +27,42 @@ namespace EvaluationApp
     {
         private MainPage rootPage;
         string ID;
-        Evaluation evaluation;
+        private Evaluation evaluation;
+        private ObservableCollection<Observation> observationList = new ObservableCollection<Observation>();
 
         public StaticEvalSummary()
         {
             this.InitializeComponent();
-
-            loadData();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if(e.Parameter is string)
+            rootPage = MainPage.Current;
+
+            if (e.Parameter is string)
             {
-                rootPage = MainPage.Current;
                 ID = e.Parameter.ToString();
+                loadData();
             }
         }
 
         async void loadData()
         {
+            var s = "descendant::evaluation[evalID = " + ID + "]";
             try
             {
                 XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
-                var evaluations = doc.SelectNodes("descendant::evaluation[evalID = " + ID);
-                evaluation = new Evaluation(evaluations[0]);
+                var evaluations = doc.SelectSingleNode(s);
+                evaluation = new Evaluation(evaluations);
+                foreach (var item in evaluation.observationList)
+                {
+                    observationList.Add(item);
+                    //observationList = new ObservableCollection<Observation>(evaluation.observationList);
+                }
             }
             catch (Exception exp)
             {
-                rootPage.NotifyUser("Exception occured while loading xml file!", MainPage.NotifyType.ErrorMessage);
+                //rootPage.NotifyUser("Exception occured while loading xml file!", MainPage.NotifyType.ErrorMessage);
             }
         }
     }

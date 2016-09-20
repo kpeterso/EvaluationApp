@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,8 +13,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace EvaluationApp
 {
@@ -37,7 +36,7 @@ namespace EvaluationApp
         {
             this.InitializeComponent();
             Current = this;
-            SampleTitle.Text = "Evaluation App";
+            //SampleTitle.Text = "Evaluation App";
         }
 
 
@@ -46,14 +45,7 @@ namespace EvaluationApp
         {
             // Populate the scenario list from the SampleConfiguration.cs file
             ScenarioControl.ItemsSource = scenarios;
-            if (Window.Current.Bounds.Width < 640)
-            {
-                ScenarioControl.SelectedIndex = -1;
-            }
-            else
-            {
-                ScenarioControl.SelectedIndex = 0;
-            }
+            ScenarioControl.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -64,18 +56,19 @@ namespace EvaluationApp
         /// <param name="e"></param>
         private void ScenarioControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Frame rootFrame = Window.Current.Content as Frame;
             // Clear the status block when navigating scenarios.
-            NotifyUser(String.Empty, NotifyType.StatusMessage);
+            //NotifyUser(String.Empty, NotifyType.StatusMessage);
 
             ListBox scenarioListBox = sender as ListBox;
             Scenario s = scenarioListBox.SelectedItem as Scenario;
             if (s != null)
             {
-                ScenarioFrame.Navigate(s.ClassType);
-                if (Window.Current.Bounds.Width < 640)
+                rootFrame.Navigate(s.ClassType);
+                /*if (Window.Current.Bounds.Width < 640)
                 {
                     Splitter.IsPaneOpen = false;
-                }
+                }*/
             }
         }
 
@@ -84,7 +77,7 @@ namespace EvaluationApp
             get { return this.scenarios; }
         }
 
-        /// <summary>
+/*        /// <summary>
         /// Used to display messages to the user
         /// </summary>
         /// <param name="strMessage"></param>
@@ -115,8 +108,8 @@ namespace EvaluationApp
                 StatusPanel.Visibility = Visibility.Collapsed;
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+*/
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             Splitter.IsPaneOpen = !Splitter.IsPaneOpen;
         }
@@ -125,7 +118,7 @@ namespace EvaluationApp
         {
             StatusMessage,
             ErrorMessage
-        };
+        };*/
     }
 
     public class ScenarioBindingConverter : IValueConverter

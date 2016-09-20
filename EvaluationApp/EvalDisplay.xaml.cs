@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using System.Collections.ObjectModel;
 
 namespace EvaluationApp
 {
@@ -22,11 +24,13 @@ namespace EvaluationApp
     public sealed partial class EvalDisplay : Page
     {
         private MainPage rootPage;
-        private List<Evaluation> Evaluations = new List<Evaluation>();
+        private ObservableCollection<Evaluation> Evaluations = new ObservableCollection<Evaluation>();
+        
 
         public EvalDisplay()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
             EvalDisplayInit();
         }
@@ -62,19 +66,22 @@ namespace EvaluationApp
             }
             catch (Exception exp)
             {
-                rootPage.NotifyUser("Exception occured while loading xml file!", MainPage.NotifyType.ErrorMessage);
+                //rootPage.NotifyUser("Exception occured while loading xml file!", MainPage.NotifyType.ErrorMessage);
             }
  
         }
 
         private void button_openSummary_Click(object sender, RoutedEventArgs e)
         {
+            Frame rootFrame = Window.Current.Content as Frame;
             //textBlock.Text = listBoxEval.SelectedItem.ToString();
             var item = ((Evaluation)listBoxEval.SelectedItem).evalID;
             switch (listBoxEval.SelectedItem.ToString())
             {
                 case "Static Evaluation":
-                    this.Frame.Navigate(typeof(StaticEvalSummary), item);
+                    rootFrame.Navigate(typeof(StaticEvalSummary), item);
+                    break;
+                case "Route Evaluation":
                     break;
             }
         }
