@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -83,6 +84,27 @@ namespace EvaluationApp
 
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+
+            initXml();
+        }
+
+        private async void initXml()
+        {
+            try
+            {
+                Windows.Data.Xml.Dom.XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
+                Evaluation.evaluationDoc = doc;
+            }
+            catch (Exception exp)
+            {
+            }
+
+            var evaluations = Evaluation.evaluationDoc.SelectNodes("descendant::evaluation");
+            foreach (IXmlNode evaluation in evaluations)
+            {
+                Evaluation eval = new EvaluationApp.Evaluation(evaluation);
+                Evaluation.evaluationList.Add(eval);
+            }
         }
 
         /// <summary>

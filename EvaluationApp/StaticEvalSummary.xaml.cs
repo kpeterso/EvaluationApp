@@ -26,7 +26,7 @@ namespace EvaluationApp
         private MainPage rootPage;
         string ID;
         private Evaluation evaluation;
-        private ObservableCollection<Observation> observationList = new ObservableCollection<Observation>();
+        private ObservableCollection<Observation> observationList;
 
         public StaticEvalSummary()
         {
@@ -40,28 +40,22 @@ namespace EvaluationApp
             if (e.Parameter is string)
             {
                 ID = e.Parameter.ToString();
+                //evaluation = Evaluation.evaluationList.Find
                 loadData();
             }
         }
 
-        async void loadData()
+        private void loadData()
         {
-            var s = "descendant::evaluation[evalID = " + ID + "]";
-            try
+            foreach(Evaluation eval in Evaluation.evaluationList)
             {
-                XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
-                var evaluations = doc.SelectSingleNode(s);
-                evaluation = new Evaluation(evaluations);
-                foreach (var item in evaluation.observationList)
+                if (eval.evalID == ID.ToString())
                 {
-                    observationList.Add(item);
-                    //observationList = new ObservableCollection<Observation>(evaluation.observationList);
+                    evaluation = eval;
+                    break;
                 }
             }
-            catch (Exception exp)
-            {
-                //rootPage.NotifyUser("Exception occured while loading xml file!", MainPage.NotifyType.ErrorMessage);
-            }
+            observationList = new ObservableCollection<Observation>(evaluation.observationList);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace EvaluationApp
         public EvalDisplay()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            this.NavigationCacheMode = NavigationCacheMode.Disabled;
 
             EvalDisplayInit();
         }
@@ -45,30 +45,9 @@ namespace EvaluationApp
             rootPage = MainPage.Current;
         }
 
-        async void EvalDisplayInit()
+        void EvalDisplayInit()
         {
-            //ItemCollection items = listBoxEval.Items;
-            try
-            {
-                XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
-                var evaluations = doc.SelectNodes("descendant::evaluation");
-                foreach (IXmlNode evaluation in evaluations)
-                {
-                    Evaluation eval = new EvaluationApp.Evaluation(evaluation);
-                    Evaluations.Add(eval);
-
-                    //var item = new TextBlock();
-                    //item.DataContext = eval;
-                    //item.Text = eval.evalID + " " + eval.driverName + " " + eval.vehicleName + " " + eval.evalType;
-                    //items.Add(item);
-
-                }
-            }
-            catch (Exception exp)
-            {
-                //rootPage.NotifyUser("Exception occured while loading xml file!", MainPage.NotifyType.ErrorMessage);
-            }
- 
+            Evaluations = new ObservableCollection<Evaluation>(Evaluation.evaluationList);
         }
 
         private void button_openSummary_Click(object sender, RoutedEventArgs e)

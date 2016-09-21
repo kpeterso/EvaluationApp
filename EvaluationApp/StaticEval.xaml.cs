@@ -84,7 +84,11 @@ namespace EvaluationApp
             string ts = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
 
             evaluation = new Evaluation(driver, vehicle, type, ts, observationList);
-            
+            Evaluation.evaluationList.Add(evaluation);
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.GoBack();
+
         }
 
         /*These functions are for Continuous Dictation speech recognition, not needed for short sentances        

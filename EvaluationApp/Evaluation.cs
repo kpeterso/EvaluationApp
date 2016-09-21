@@ -10,6 +10,9 @@ namespace EvaluationApp
 {
     public class Evaluation
     {
+        public static Windows.Data.Xml.Dom.XmlDocument evaluationDoc { get; set; }
+        public static ObservableCollection<Evaluation> evaluationList = new ObservableCollection<Evaluation>();
+        private static int maxID { get; set; }
 
         public string evalID { get; set; }
         public string driverName { get; set; }
@@ -37,6 +40,12 @@ namespace EvaluationApp
                 Observation observation = new Observation { comment = c, timestamp = ts };
                 observationList.Add(observation);
             }
+
+            int ID = Convert.ToInt32(this.evalID);
+            if (ID > maxID)
+            {
+                maxID = ID;
+            }
         }
 
         public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
@@ -45,6 +54,9 @@ namespace EvaluationApp
             this.vehicleName = vehicle;
             this.evalType = type;
             this.submitDate = timestamp;
+            this.evalID = maxID.ToString();
+            maxID++;
+
             observationList = new ObservableCollection<Observation>(obsList);
         }
 
@@ -53,18 +65,39 @@ namespace EvaluationApp
             this.observationList.Add(obs);
         }
 
-        public static async Task<Windows.Data.Xml.Dom.XmlDocument> LoadXmlFile(String folder, String file)
+        public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
         {
             //opens an XML file and returns an XmlDocument object
             Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
             Windows.Storage.StorageFile storageFile = await storageFolder.GetFileAsync(file);
-            Windows.Data.Xml.Dom.XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
+            XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
             loadSettings.ProhibitDtd = false;
             loadSettings.ResolveExternals = false;
-            return await Windows.Data.Xml.Dom.XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
+            return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
         }
 
+        public void AddEvaluation(Evaluation eval)
+        {
+            //Create the Evaluation element
+            XmlElement newEval = evaluationDoc.CreateElement("Evaluation");
 
+            //Add class attributes to Evaluation element
+            XmlElement element = evaluationDoc.CreateElement("driverName");
+            element.InnerText = eval.driverName;
+            newEval.AppendChild(element);
+
+            element = evaluationDoc.CreateElement("vehicleName");
+            element.InnerText = eval.vehicleName;
+            newEval.AppendChild(element);
+
+            element = evaluationDoc.CreateElement("evalType");
+            element.InnerText = eval.evalType;
+            newEval.AppendChild(element);
+
+            element = evaluationDoc.CreateElement("timestamp");
+            element.InnerText = eval.submitDate;
+            newEval.AppendChild(element);
+        }
 
         public override string ToString()
         {
