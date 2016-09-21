@@ -8,18 +8,22 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="50" Margin="105,115,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="47" Margin="30,118,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
-        <ListView x:Name="listView_vehicle" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" Height="115" Margin="10,205,0,0" VerticalAlignment="Top" Width="340"/>
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="85,115,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,115,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
-        <ListView x:Name="listView_Observations" Background="{ThemeResource ListViewItemPlaceholderBackground}" HorizontalAlignment="Left" Height="145" Margin="515,115,0,0" VerticalAlignment="Top" Width="465"/>
-        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="165" Margin="10,405,0,0" VerticalAlignment="Top" Width="1004">
+        <ListView x:Name="listView_Observations" Background="{ThemeResource ListViewItemPlaceholderBackground}" HorizontalAlignment="Left" Height="145" Margin="515,115,0,0" VerticalAlignment="Top" Width="465" ItemsSource="{x:Bind observationList}" SelectionMode="None"/>
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="165" Margin="10,345,0,0" VerticalAlignment="Top" Width="1004">
             <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Margin="0,0,0,-0.2" Width="85" Click="StartVoiceRecognition_Click"/>
             <TextBox x:Name="textBox_comment" Margin="0,0,0,-0.2" Width="910"/>
         </StackPanel>
-        <Button x:Name="SubmitObservationButton" Content="Submit" HorizontalAlignment="Left" Margin="365,607,0,0" VerticalAlignment="Top" Width="400" Click="SubmitObservationButton_Click"/>
-        <TextBox x:Name="textBox_title" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" Text="Static Evaluation" VerticalAlignment="Top" Width="1014" FontWeight="Bold" FontSize="24"/>
+        <Button x:Name="SubmitObservationButton" Content="Submit" HorizontalAlignment="Left" Margin="310,515,0,0" VerticalAlignment="Top" Width="500" Click="SubmitObservationButton_Click" Height="55"/>
+        <TextBox x:Name="textBox_title" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" Text="Static Evaluation" VerticalAlignment="Top" Width="290" FontWeight="Bold" FontSize="24" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"/>
         <TextBlock x:Name="textBlock_observationHeader" HorizontalAlignment="Left" Height="20" Margin="590,90,0,0" TextWrapping="Wrap" Text="Observations:" VerticalAlignment="Top" Width="175"/>
+        <TextBlock x:Name="textBlock_Make" HorizontalAlignment="Left" Height="20" Margin="10,230,0,0" TextWrapping="Wrap" Text="Model" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"/>
+        <TextBlock x:Name="textBlock_Model" HorizontalAlignment="Left" Height="20" Margin="10,205,0,0" TextWrapping="Wrap" Text="Make" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
+        <TextBlock x:Name="textBlock_MakeText" HorizontalAlignment="Left" Height="20" Margin="70,205,0,0" TextWrapping="Wrap" Text="Infiniti" VerticalAlignment="Top" Width="85"/>
+        <TextBlock x:Name="textBlock_ModelText" HorizontalAlignment="Left" Height="20" Margin="70,230,0,0" TextWrapping="Wrap" Text="Q50" VerticalAlignment="Top" Width="85" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
+        <Button x:Name="button_EndEval" Content="Button" HorizontalAlignment="Left" Height="60" Margin="765,10,0,0" VerticalAlignment="Top" Width="235" Click="button_EndEval_Click"/>
 
     </Grid>
 </Page>

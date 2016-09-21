@@ -39,6 +39,20 @@ namespace EvaluationApp
             }
         }
 
+        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            observationList = new ObservableCollection<Observation>(obsList);
+        }
+
+        public void addObservation(Observation obs)
+        {
+            this.observationList.Add(obs);
+        }
+
         public static async Task<Windows.Data.Xml.Dom.XmlDocument> LoadXmlFile(String folder, String file)
         {
             //opens an XML file and returns an XmlDocument object
@@ -49,6 +63,8 @@ namespace EvaluationApp
             loadSettings.ResolveExternals = false;
             return await Windows.Data.Xml.Dom.XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
         }
+
+
 
         public override string ToString()
         {
