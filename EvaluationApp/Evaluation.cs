@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace EvaluationApp
         public string vehicleName { get; set; }
         public string evalType { get; set; }    //Name of Evaluation Template
         public string submitDate { get; set; }  //Date the evaluation was submitted
-        public List<Observation> observationList;   //Stores list of Observations
+        public ObservableCollection<Observation> observationList;   //Stores list of Observations
         //public List<gpsTag> gpsRoute; //Store list of gps tags that made up route
 
         public Evaluation(IXmlNode evaluation)
@@ -27,7 +28,7 @@ namespace EvaluationApp
             this.evalType = evaluation.SelectSingleNode("descendant::evalType").InnerText;
             this.submitDate = evaluation.SelectSingleNode("descendant::submitdate").InnerText;
 
-            observationList = new List<Observation>();
+            observationList = new ObservableCollection<Observation>();
             var obs = evaluation.SelectNodes("descendant::observations");
             foreach (var ob in obs)
             {

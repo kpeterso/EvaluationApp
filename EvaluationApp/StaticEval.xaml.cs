@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -13,8 +14,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace EvaluationApp
 {
     /// <summary>
@@ -22,9 +21,12 @@ namespace EvaluationApp
     /// </summary>
     public sealed partial class StaticEval : Page
     {
+        private ObservableCollection<Observation> observationList;
+
         public StaticEval()
         {
             this.InitializeComponent();
+            observationList = new ObservableCollection<Observation>();
         }
 
         private async void StartVoiceRecognition_Click(object sender, RoutedEventArgs e)
@@ -40,6 +42,15 @@ namespace EvaluationApp
 
             //Put recognition result in commentTextBlock
             textBox_comment.Text = speechRecognitionResult.Text;
+        }
+
+        private void SubmitObservationButton_Click(object sender, RoutedEventArgs e)
+        {
+            var comment = textBox_comment.Text;
+            string timestamp = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
+            Observation obs = new EvaluationApp.Observation() { comment=comment, timestamp=timestamp };
+            observationList.Add(obs);
+            textBox_comment.Text = "";
         }
     }
 }

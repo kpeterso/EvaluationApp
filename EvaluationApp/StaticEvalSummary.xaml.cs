@@ -16,8 +16,6 @@ using Windows.Data.Xml.Dom;
 using System.Collections.ObjectModel;
 using Windows.UI.Core;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace EvaluationApp
 {
     /// <summary>

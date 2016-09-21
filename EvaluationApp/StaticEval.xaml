@@ -17,7 +17,7 @@
             <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Margin="0,0,0,-0.2" Width="85" Click="StartVoiceRecognition_Click"/>
             <TextBox x:Name="textBox_comment" Margin="0,0,0,-0.2" Width="910"/>
         </StackPanel>
-        <Button x:Name="SubmitObservationButton" Content="Submit" HorizontalAlignment="Left" Margin="365,607,0,0" VerticalAlignment="Top" Width="400"/>
+        <Button x:Name="SubmitObservationButton" Content="Submit" HorizontalAlignment="Left" Margin="365,607,0,0" VerticalAlignment="Top" Width="400" Click="SubmitObservationButton_Click"/>
         <TextBox x:Name="textBox_title" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" Text="Static Evaluation" VerticalAlignment="Top" Width="1014" FontWeight="Bold" FontSize="24"/>
         <TextBlock x:Name="textBlock_observationHeader" HorizontalAlignment="Left" Height="20" Margin="590,90,0,0" TextWrapping="Wrap" Text="Observations:" VerticalAlignment="Top" Width="175"/>
 
