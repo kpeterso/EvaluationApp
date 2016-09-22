@@ -26,7 +26,7 @@ namespace EvaluationApp
         private MainPage rootPage;
         string ID;
         private Evaluation evaluation;
-        private ObservableCollection<Observation> observationList;
+        private ObservableCollection<Observation> oList;
 
         public StaticEvalSummary()
         {
@@ -40,7 +40,6 @@ namespace EvaluationApp
             if (e.Parameter is string)
             {
                 ID = e.Parameter.ToString();
-                //evaluation = Evaluation.evaluationList.Find
                 loadData();
             }
         }
@@ -51,11 +50,11 @@ namespace EvaluationApp
             {
                 if (eval.evalID == ID.ToString())
                 {
-                    evaluation = eval;
+                    evaluation = new Evaluation(eval);
                     break;
                 }
             }
-            observationList = new ObservableCollection<Observation>(evaluation.observationList);
+            oList = new ObservableCollection<Observation>(evaluation.observationList);
         }
     }
 }

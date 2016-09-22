@@ -31,14 +31,14 @@ namespace EvaluationApp
 
         //Define page vars
         private SpeechRecognizer speechRecognizer;
-        private ObservableCollection<Observation> observationList;
+        private ObservableCollection<Observation> oList;
         private Evaluation evaluation;
         private MainPage rootPage;
 
         public StaticEval()
         {
             this.InitializeComponent();
-            observationList = new ObservableCollection<Observation>();
+            oList = new ObservableCollection<Observation>();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -72,7 +72,7 @@ namespace EvaluationApp
             var comment = textBox_comment.Text;
             string timestamp = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
             Observation obs = new EvaluationApp.Observation() { comment=comment, timestamp=timestamp };
-            observationList.Add(obs);
+            oList.Add(obs);
             textBox_comment.Text = "";
         }
 
@@ -83,7 +83,7 @@ namespace EvaluationApp
             string type = "Static Evaluation";
             string ts = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
 
-            evaluation = new Evaluation(driver, vehicle, type, ts, observationList);
+            evaluation = new Evaluation(driver, vehicle, type, ts, oList);
             Evaluation.evaluationList.Add(evaluation);
 
             Frame rootFrame = Window.Current.Content as Frame;

@@ -11,7 +11,7 @@
         <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="85,115,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,115,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
-        <ListView x:Name="listView_Observations" Background="{ThemeResource ListViewItemPlaceholderBackground}" HorizontalAlignment="Left" Height="145" Margin="675,145,0,0" VerticalAlignment="Top" Width="285" ItemsSource="{x:Bind observationList}" SelectionMode="None"/>
+        <ListView x:Name="listView_Observations" Background="{ThemeResource ListViewItemPlaceholderBackground}" HorizontalAlignment="Left" Height="145" Margin="675,145,0,0" VerticalAlignment="Top" Width="285" ItemsSource="{x:Bind oList}" SelectionMode="None"/>
         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="80" Margin="10,345,0,0" VerticalAlignment="Top" Width="1004">
             <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Margin="0,0,0,0.2" Width="85" Click="StartVoiceRecognition_Click"/>
             <TextBox x:Name="textBox_comment" Margin="0,0,0,0.2" Width="910"/>

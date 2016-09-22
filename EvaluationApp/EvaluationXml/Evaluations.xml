@@ -25,11 +25,11 @@
     <submitdate>03/02/2016 14:24:54.22</submitdate>
     <observations>
       <observation>
-        <comment>This car is great.</comment>
+        <comment>This car is ok.</comment>
         <timestamp>02/08/2016 08:07:02.56</timestamp>
       </observation>
       <observation>
-        <comment>The ride handling is a little rough. The shock absorbers are not damping out quickly enough</comment>
+        <comment>The ride handling is ok. The shock absorbers are damping fine</comment>
         <timestamp>02/08/2016 09:09:05.09</timestamp>
       </observation>
     </observations>
@@ -42,11 +42,11 @@
     <submitdate>09/09/2016 10:06:12.58</submitdate>
     <observations>
       <observation>
-        <comment>This car is great.</comment>
+        <comment>This car sucks.</comment>
         <timestamp>09/09/2016 06:07:07.09</timestamp>
       </observation>
       <observation>
-        <comment>The ride handling is a little rough. The shock absorbers are not damping out quickly enough</comment>
+        <comment>The ride handling is very good. The shock absorbers damp way too much</comment>
         <timestamp>09/09/2016 07:07:07.07</timestamp>
       </observation>
     </observations>

@@ -32,7 +32,7 @@ namespace EvaluationApp
             this.submitDate = evaluation.SelectSingleNode("descendant::submitdate").InnerText;
 
             observationList = new ObservableCollection<Observation>();
-            var obs = evaluation.SelectNodes("descendant::observations");
+            var obs = evaluation.SelectSingleNode("descendant::observations").SelectNodes("descendant::observation");
             foreach (var ob in obs)
             {
                 string c = ob.SelectSingleNode("descendant::comment").InnerText;
@@ -54,10 +54,21 @@ namespace EvaluationApp
             this.vehicleName = vehicle;
             this.evalType = type;
             this.submitDate = timestamp;
-            this.evalID = maxID.ToString();
             maxID++;
+            this.evalID = maxID.ToString();
+            
+            this.observationList = new ObservableCollection<Observation>(obsList);
+        }
 
-            observationList = new ObservableCollection<Observation>(obsList);
+        public Evaluation(Evaluation e)
+        {
+            this.driverName = e.driverName;
+            this.vehicleName = e.vehicleName;
+            this.evalType = e.evalType;
+            this.submitDate = e.submitDate;
+            this.evalID = e.evalID;
+
+            observationList = new ObservableCollection<Observation>(e.observationList);
         }
 
         public void addObservation(Observation obs)
