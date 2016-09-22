@@ -110,6 +110,12 @@
     <Compile Include="StaticEvalSummary.xaml.cs">
       <DependentUpon>StaticEvalSummary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StaticSurveyEval.xaml.cs">
+      <DependentUpon>StaticSurveyEval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaticSurveyEvalSummary.xaml.cs">
+      <DependentUpon>StaticSurveyEvalSummary.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -146,6 +152,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StaticEvalSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaticSurveyEval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaticSurveyEvalSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

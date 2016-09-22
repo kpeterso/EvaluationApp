@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="EvaluationApp.StaticSurveyEvalSummary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EvaluationApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="355" Margin="85,125,0,0" VerticalAlignment="Top" Width="875"/>
+        <TextBlock x:Name="textBlock_driver" HorizontalAlignment="Left" Height="30" Margin="25,35,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="75"/>
+        <TextBlock x:Name="textBlock_vehicle" HorizontalAlignment="Left" Height="30" Margin="25,70,0,0" TextWrapping="Wrap" Text="Vehicle" VerticalAlignment="Top" Width="75"/>
+        <TextBlock x:Name="textBlock_driverName" HorizontalAlignment="Left" Height="30" Margin="105,35,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="135"/>
+        <TextBlock x:Name="textBlock_vehicleName" HorizontalAlignment="Left" Height="30" Margin="105,70,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="135"/>
+
+    </Grid>
+</Page>
