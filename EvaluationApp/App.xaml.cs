@@ -92,7 +92,7 @@ namespace EvaluationApp
         {
             try
             {
-                Windows.Data.Xml.Dom.XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
+                XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
                 Evaluation.evaluationDoc = doc;
             }
             catch (Exception exp)

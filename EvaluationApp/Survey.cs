@@ -28,17 +28,20 @@ namespace EvaluationApp
             }
         }
 
-        public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
+/*        public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
         {
-            //opens an XML file and returns an XmlDocument object
-            Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
-            Windows.Storage.StorageFile storageFile = await storageFolder.GetFileAsync(file);
-            XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
-            loadSettings.ProhibitDtd = false;
-            loadSettings.ResolveExternals = false;
-            return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
+            try
+            {
+                //opens an XML file and returns an XmlDocument object
+                Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
+                Windows.Storage.StorageFile storageFile = await storageFolder.GetFileAsync(file);
+                XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
+                loadSettings.ProhibitDtd = false;
+                loadSettings.ResolveExternals = false;
+                return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
+            }catch(Exception e) { return null; }
         }
-
+        */
     }
 
     public class surveyQuestion
@@ -46,9 +49,6 @@ namespace EvaluationApp
         public string questionText { get; set; }
         public int questionID { get; set; }
 
-        public override string ToString()
-        {
-            return questionText.ToString();
-        }
+        public override string ToString() { return questionText; }
     }
 }

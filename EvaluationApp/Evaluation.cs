@@ -136,7 +136,7 @@ namespace EvaluationApp
             //opens an XML file and returns an XmlDocument object
             Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
             Windows.Storage.StorageFile storageFile = await storageFolder.GetFileAsync(file);
-            XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
+            XmlLoadSettings loadSettings = new XmlLoadSettings();
             loadSettings.ProhibitDtd = false;
             loadSettings.ResolveExternals = false;
             return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
