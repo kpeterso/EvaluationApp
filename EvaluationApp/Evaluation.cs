@@ -20,6 +20,7 @@ namespace EvaluationApp
         public string evalType { get; set; }    //Name of Evaluation Template
         public string submitDate { get; set; }  //Date the evaluation was submitted
         public ObservableCollection<Observation> observationList;   //Stores list of Observations
+        public ObservableCollection<SurveyResponse> surveyResponseList; //Stores list of survey responses
         //public List<gpsTag> gpsRoute; //Store list of gps tags that made up route
 
         public Evaluation(IXmlNode evaluation)
@@ -31,6 +32,7 @@ namespace EvaluationApp
             this.evalType = evaluation.SelectSingleNode("descendant::evalType").InnerText;
             this.submitDate = evaluation.SelectSingleNode("descendant::submitdate").InnerText;
 
+            //fill observationList with observations
             observationList = new ObservableCollection<Observation>();
             var obs = evaluation.SelectSingleNode("descendant::observations").SelectNodes("descendant::observation");
             foreach (var ob in obs)
@@ -41,6 +43,23 @@ namespace EvaluationApp
                 observationList.Add(observation);
             }
 
+            //Create list of survey responses from evaluation
+            surveyResponseList = new ObservableCollection<SurveyResponse>();
+            var res = evaluation.SelectSingleNode("descendant::surveyresponses").SelectNodes("descendant::surveyresponse");
+            foreach (var r in res)
+            {
+                string id = r.SelectSingleNode("descendant::questionID").InnerText;
+                uint y = 0;
+                uint.TryParse(id, out y);
+                string rate = r.SelectSingleNode("descendant::rating").InnerText;
+                ulong x=0;
+                ulong.TryParse(rate, out x);
+                string c = r.SelectSingleNode("descendant::comment").InnerText;
+                string ts = r.SelectSingleNode("descendant::timestamp").InnerText;
+                SurveyResponse surveyResponse = new SurveyResponse { questionNumber = y, rating = x, comment = c, timestamp = ts };
+                surveyResponseList.Add(surveyResponse);
+            }
+
             int ID = Convert.ToInt32(this.evalID);
             if (ID > maxID)
             {
@@ -48,7 +67,7 @@ namespace EvaluationApp
             }
         }
 
-        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
+        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
         {
             this.driverName = driver;
             this.vehicleName = vehicle;
@@ -58,6 +77,7 @@ namespace EvaluationApp
             this.evalID = maxID.ToString();
             
             this.observationList = new ObservableCollection<Observation>(obsList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
         }
 
         public Evaluation(Evaluation e)
@@ -68,7 +88,8 @@ namespace EvaluationApp
             this.submitDate = e.submitDate;
             this.evalID = e.evalID;
 
-            observationList = new ObservableCollection<Observation>(e.observationList);
+            this.observationList = new ObservableCollection<Observation>(e.observationList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(e.surveyResponseList);
         }
 
         public void addObservation(Observation obs)
@@ -123,8 +144,17 @@ namespace EvaluationApp
         //public gpsTag geoTag; //Store location observation was made
         //public List<string> photoLinks;   //Store links to photo files in memory
         //public List<string> videoLinks;   //Store links to video files in memory
-
     }
 
+    public class SurveyResponse
+    {
+        public uint questionNumber { get; set; }
+        public ulong rating;
+        public string comment { get; set; }
+        public string timestamp { get; set; }
+        //public gpsTag geoTag; //Store location observation was made
+        //public List<string> photoLinks;   //Store links to photo files in memory
+        //public List<string> videoLinks;   //Store links to video files in memory
+    }
 
 }

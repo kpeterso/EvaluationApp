@@ -24,7 +24,7 @@ namespace EvaluationApp
     public sealed partial class StaticEvalSummary : Page
     {
         private MainPage rootPage;
-        string ID;
+        private string ID;
         private Evaluation evaluation;
         private ObservableCollection<Observation> oList;
 

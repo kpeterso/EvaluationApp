@@ -44,10 +44,16 @@ namespace EvaluationApp
             loadSettings.ResolveExternals = false;
             return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
         }
+
     }
 
     public class surveyQuestion
     {
         public string questionText { get; set; }
         public int questionID { get; set; }
+
+        public override string ToString()
+        {
+            return questionText.ToString();
+        }
     }
