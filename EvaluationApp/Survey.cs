@@ -13,14 +13,8 @@ namespace EvaluationApp
         public ObservableCollection<surveyQuestion> surveyQuestionList;
         public string surveyName;
 
-        public Survey()
-        {   
-        }
-
-        public async void initSurvey(string folderName, string fileName)
+        public Survey(XmlDocument doc)
         {
-            XmlDocument doc= await LoadXmlFile(folderName, fileName);
-
             this.surveyName = doc.SelectSingleNode("descendant::surveyname").InnerText;
 
             surveyQuestionList = new ObservableCollection<surveyQuestion>();
@@ -57,3 +51,4 @@ namespace EvaluationApp
             return questionText.ToString();
         }
     }
+}

@@ -34,31 +34,39 @@ namespace EvaluationApp
 
             //fill observationList with observations
             observationList = new ObservableCollection<Observation>();
-            var obs = evaluation.SelectSingleNode("descendant::observations").SelectNodes("descendant::observation");
-            foreach (var ob in obs)
+            
+            try
             {
-                string c = ob.SelectSingleNode("descendant::comment").InnerText;
-                string ts = ob.SelectSingleNode("descendant::timestamp").InnerText;
-                Observation observation = new Observation { comment = c, timestamp = ts };
-                observationList.Add(observation);
-            }
-
+                var obs = evaluation.SelectSingleNode("descendant::observations").SelectNodes("descendant::observation");
+                foreach (var ob in obs)
+                {
+                    string c = ob.SelectSingleNode("descendant::comment").InnerText;
+                    string ts = ob.SelectSingleNode("descendant::timestamp").InnerText;
+                    Observation observation = new Observation { comment = c, timestamp = ts };
+                    observationList.Add(observation);
+                }
+            } catch(Exception e) { }
+            
             //Create list of survey responses from evaluation
             surveyResponseList = new ObservableCollection<SurveyResponse>();
-            var res = evaluation.SelectSingleNode("descendant::surveyresponses").SelectNodes("descendant::surveyresponse");
-            foreach (var r in res)
+            try
             {
-                string id = r.SelectSingleNode("descendant::questionID").InnerText;
-                uint y = 0;
-                uint.TryParse(id, out y);
-                string rate = r.SelectSingleNode("descendant::rating").InnerText;
-                ulong x=0;
-                ulong.TryParse(rate, out x);
-                string c = r.SelectSingleNode("descendant::comment").InnerText;
-                string ts = r.SelectSingleNode("descendant::timestamp").InnerText;
-                SurveyResponse surveyResponse = new SurveyResponse { questionNumber = y, rating = x, comment = c, timestamp = ts };
-                surveyResponseList.Add(surveyResponse);
+                var res = evaluation.SelectSingleNode("descendant::surveyresponses").SelectNodes("descendant::surveyresponse");
+                foreach (var r in res)
+                {
+                    string id = r.SelectSingleNode("descendant::questionid").InnerText;
+                    uint y = 0;
+                    uint.TryParse(id, out y);
+                    string rate = r.SelectSingleNode("descendant::rating").InnerText;
+                    ulong x = 0;
+                    ulong.TryParse(rate, out x);
+                    string c = r.SelectSingleNode("descendant::comment").InnerText;
+                    string ts = r.SelectSingleNode("descendant::timestamp").InnerText;
+                    SurveyResponse surveyResponse = new SurveyResponse { questionNumber = y, rating = x, comment = c, timestamp = ts };
+                    surveyResponseList.Add(surveyResponse);
+                }
             }
+            catch (Exception e) { }
 
             int ID = Convert.ToInt32(this.evalID);
             if (ID > maxID)
@@ -66,7 +74,7 @@ namespace EvaluationApp
                 maxID = ID;
             }
         }
-
+        
         public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
         {
             this.driverName = driver;
@@ -77,6 +85,32 @@ namespace EvaluationApp
             this.evalID = maxID.ToString();
             
             this.observationList = new ObservableCollection<Observation>(obsList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            maxID++;
+            this.evalID = maxID.ToString();
+
+            this.observationList = new ObservableCollection<Observation>(obsList);
+            //this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<SurveyResponse> srList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            maxID++;
+            this.evalID = maxID.ToString();
+
+            //this.observationList = new ObservableCollection<Observation>(obsList);
             this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
         }
 

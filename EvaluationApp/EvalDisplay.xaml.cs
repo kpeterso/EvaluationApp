@@ -60,6 +60,9 @@ namespace EvaluationApp
                 case "Static Evaluation":
                     rootFrame.Navigate(typeof(StaticEvalSummary), item);
                     break;
+                case "Static Survey Evaluation":
+                    rootFrame.Navigate(typeof(StaticSurveyEvalSummary), item);
+                    break;
                 case "Route Evaluation":
                     break;
             }
