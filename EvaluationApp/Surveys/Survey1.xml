@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<survey>
+  <surveyname>Test Survey</surveyname>
+  <creator>Karl Peterson</creator>
+  <creationtime>02/08/2016 07:05:07.47</creationtime>
+  <questions>
+    <question>
+      <id>1</id>
+      <text>How is the ride handling?</text>
+    </question>
+    <question>
+      <id>2</id>
+      <text>How is the steering feel?</text>
+    </question>
+    <question>
+      <id>3</id>
+      <text>How is the wind noise?</text>
+    </question>
+  </questions>
+</survey>

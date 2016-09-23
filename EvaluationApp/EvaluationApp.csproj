@@ -116,6 +116,7 @@
     <Compile Include="StaticSurveyEvalSummary.xaml.cs">
       <DependentUpon>StaticSurveyEvalSummary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Survey.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -124,7 +125,9 @@
     <None Include="EvaluationApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EvaluationXml\Evaluations.xml" />
+    <Content Include="EvaluationXml\Evaluations.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -133,6 +136,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Surveys\Survey1.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
