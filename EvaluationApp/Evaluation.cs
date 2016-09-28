@@ -10,7 +10,7 @@ namespace EvaluationApp
 {
     public class Evaluation
     {
-        public static Windows.Data.Xml.Dom.XmlDocument evaluationDoc { get; set; }
+        public static XmlDocument evaluationDoc { get; set; }
         public static ObservableCollection<Evaluation> evaluationList = new ObservableCollection<Evaluation>();
         private static int maxID { get; set; }
 
@@ -19,6 +19,7 @@ namespace EvaluationApp
         public string vehicleName { get; set; }
         public string evalType { get; set; }    //Name of Evaluation Template
         public string submitDate { get; set; }  //Date the evaluation was submitted
+        public string surveyName { get; set; }  //name of associated survey
         public ObservableCollection<Observation> observationList;   //Stores list of Observations
         public ObservableCollection<SurveyResponse> surveyResponseList; //Stores list of survey responses
         //public List<gpsTag> gpsRoute; //Store list of gps tags that made up route
@@ -30,6 +31,8 @@ namespace EvaluationApp
             this.driverName = evaluation.SelectSingleNode("descendant::driverName").InnerText;
             this.vehicleName = evaluation.SelectSingleNode("descendant::vehicleName").InnerText;
             this.evalType = evaluation.SelectSingleNode("descendant::evalType").InnerText;
+            this.surveyName = evaluation.SelectSingleNode("descendant::surveyname").InnerText;
+
             this.submitDate = evaluation.SelectSingleNode("descendant::submitdate").InnerText;
 
             //fill observationList with observations
@@ -75,7 +78,7 @@ namespace EvaluationApp
             }
         }
         
-        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
+        public Evaluation(string driver, string vehicle, string type, string sName, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
         {
             this.driverName = driver;
             this.vehicleName = vehicle;
@@ -83,12 +86,13 @@ namespace EvaluationApp
             this.submitDate = timestamp;
             maxID++;
             this.evalID = maxID.ToString();
+            this.surveyName = sName;
             
             this.observationList = new ObservableCollection<Observation>(obsList);
             this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
         }
 
-        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
+        public Evaluation(string driver, string vehicle, string type, string sName, string timestamp, ObservableCollection<Observation> obsList)
         {
             this.driverName = driver;
             this.vehicleName = vehicle;
@@ -96,12 +100,13 @@ namespace EvaluationApp
             this.submitDate = timestamp;
             maxID++;
             this.evalID = maxID.ToString();
+            this.surveyName = sName;
 
             this.observationList = new ObservableCollection<Observation>(obsList);
             //this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
         }
 
-        public Evaluation(string driver, string vehicle, string type, string timestamp, ObservableCollection<SurveyResponse> srList)
+        public Evaluation(string driver, string vehicle, string type, string sName, string timestamp, ObservableCollection<SurveyResponse> srList)
         {
             this.driverName = driver;
             this.vehicleName = vehicle;
@@ -109,6 +114,7 @@ namespace EvaluationApp
             this.submitDate = timestamp;
             maxID++;
             this.evalID = maxID.ToString();
+            this.surveyName = sName;
 
             //this.observationList = new ObservableCollection<Observation>(obsList);
             this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
@@ -121,6 +127,7 @@ namespace EvaluationApp
             this.evalType = e.evalType;
             this.submitDate = e.submitDate;
             this.evalID = e.evalID;
+            this.surveyName = e.surveyName;
 
             this.observationList = new ObservableCollection<Observation>(e.observationList);
             this.surveyResponseList = new ObservableCollection<SurveyResponse>(e.surveyResponseList);

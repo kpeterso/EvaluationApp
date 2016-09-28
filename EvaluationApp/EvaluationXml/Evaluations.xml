@@ -5,6 +5,7 @@
     <driverName>Nate Herbrandson</driverName>
     <vehicleName>Nissan Altima</vehicleName>
     <evalType>Static Evaluation</evalType>
+    <surveyname></surveyname>
     <submitdate>02/08/2016 10:02:02.42</submitdate>
     <observations>
       <observation>
@@ -22,6 +23,7 @@
     <driverName>Karl Peterson</driverName>
     <vehicleName>Toyota Camry</vehicleName>
     <evalType>Static Evaluation</evalType>
+    <surveyname></surveyname>
     <submitdate>03/02/2016 14:24:54.22</submitdate>
     <observations>
       <observation>
@@ -39,6 +41,7 @@
     <driverName>Josh Kucinski</driverName>
     <vehicleName>Nissan Rogue</vehicleName>
     <evalType>Static Evaluation</evalType>
+    <surveyname></surveyname>
     <submitdate>09/09/2016 10:06:12.58</submitdate>
     <observations>
       <observation>
@@ -57,6 +60,7 @@
     <driverName>Scott Coll</driverName>
     <vehicleName>Nissan Pathfinder</vehicleName>
     <evalType>Static Survey Evaluation</evalType>
+    <surveyname>Test Survey</surveyname>
     <submitdate>09/19/2016 15:12:12.10</submitdate>
     <observations></observations>
     <surveyresponses>

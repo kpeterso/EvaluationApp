@@ -90,10 +90,14 @@ namespace EvaluationApp
 
         private async void initXml()
         {
+            //Load Evaluations and Surveys from XML files, load into static lists
             try
             {
                 XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
                 Evaluation.evaluationDoc = doc;
+
+                doc = await Evaluation.LoadXmlFile("Surveys", "Survey1.xml");
+                Survey.surveyDoc = doc;
             }
             catch (Exception exp)
             {
@@ -102,8 +106,15 @@ namespace EvaluationApp
             var evaluations = Evaluation.evaluationDoc.SelectNodes("descendant::evaluation");
             foreach (IXmlNode evaluation in evaluations)
             {
-                Evaluation eval = new EvaluationApp.Evaluation(evaluation);
+                Evaluation eval = new Evaluation(evaluation);
                 Evaluation.evaluationList.Add(eval);
+            }
+
+            var surveys = Survey.surveyDoc.SelectNodes("descendant::survey");
+            foreach (IXmlNode survey in surveys)
+            {
+                Survey s = new Survey(survey);
+                Survey.surveyList.Add(s);
             }
         }
 

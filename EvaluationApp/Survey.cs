@@ -10,15 +10,18 @@ namespace EvaluationApp
 {
     class Survey
     {
-        public ObservableCollection<surveyQuestion> surveyQuestionList;
-        public string surveyName;
+        public static XmlDocument surveyDoc { get; set; }
+        public static ObservableCollection<Survey> surveyList = new ObservableCollection<Survey>();
 
-        public Survey(XmlDocument doc)
+        public string surveyName;
+        public ObservableCollection<surveyQuestion> surveyQuestionList;
+
+        public Survey(IXmlNode s)
         {
-            this.surveyName = doc.SelectSingleNode("descendant::surveyname").InnerText;
+            this.surveyName = s.SelectSingleNode("descendant::surveyname").InnerText;
 
             surveyQuestionList = new ObservableCollection<surveyQuestion>();
-            var questions = doc.SelectSingleNode("descendant::questions").SelectNodes("descendant::question");
+            var questions = s.SelectSingleNode("descendant::questions").SelectNodes("descendant::question");
             foreach (var q in questions)
             {
                 string t = q.SelectSingleNode("descendant::text").InnerText;
@@ -28,20 +31,17 @@ namespace EvaluationApp
             }
         }
 
-/*        public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
+        public static Survey findSurvey(string name)
         {
-            try
+            foreach(Survey survey in surveyList)
             {
-                //opens an XML file and returns an XmlDocument object
-                Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
-                Windows.Storage.StorageFile storageFile = await storageFolder.GetFileAsync(file);
-                XmlLoadSettings loadSettings = new Windows.Data.Xml.Dom.XmlLoadSettings();
-                loadSettings.ProhibitDtd = false;
-                loadSettings.ResolveExternals = false;
-                return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
-            }catch(Exception e) { return null; }
+                if(survey.surveyName == name)
+                {
+                    return survey;
+                }
+            }
+            return null;
         }
-        */
     }
 
     public class surveyQuestion

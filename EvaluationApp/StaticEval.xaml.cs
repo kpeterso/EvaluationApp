@@ -83,7 +83,7 @@ namespace EvaluationApp
             string type = "Static Evaluation";
             string ts = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
 
-            evaluation = new Evaluation(driver, vehicle, type, ts, oList);
+            evaluation = new Evaluation(driver, vehicle, type, null, ts, oList);
             Evaluation.evaluationList.Add(evaluation);
 
             Frame rootFrame = Window.Current.Content as Frame;

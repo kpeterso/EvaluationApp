@@ -26,8 +26,8 @@ namespace EvaluationApp
         private string ID;
         private Evaluation evaluation;
         private ObservableCollection<Observation> oList;
+        private string surveyName;
 
-        private Survey survey;
         ObservableCollection<surveyQuestion> questionList;
 
         public StaticSurveyEvalSummary()
@@ -42,23 +42,17 @@ namespace EvaluationApp
             if (e.Parameter is string)
             {
                 ID = e.Parameter.ToString();
-                initSurvey();
+
                 loadData();
+                initSurvey();
             }
         }
 
-        private async void initSurvey()
+        private void initSurvey()
         {
-            try
-            {
-                Windows.Data.Xml.Dom.XmlDocument doc = await Evaluation.LoadXmlFile("Surveys", "Survey1.xml");
-                survey = new Survey(doc);
-                questionList = new ObservableCollection<surveyQuestion>(survey.surveyQuestionList);
-            }
-            catch (Exception exp)
-            {
-                throw;
-            }
+            Survey survey = Survey.findSurvey(surveyName);
+            questionList = new ObservableCollection<surveyQuestion>(survey.surveyQuestionList);
+
         }
 
         private void listBox_surveyQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,6 +73,7 @@ namespace EvaluationApp
                 }
             }
             oList = new ObservableCollection<Observation>(evaluation.observationList);
+            surveyName = evaluation.surveyName;
         }
     }
 }
