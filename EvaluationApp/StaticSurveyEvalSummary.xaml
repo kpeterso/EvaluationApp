@@ -8,22 +8,17 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="251*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox x:Name="listBox_surveyQuestions" HorizontalAlignment="Left" Height="355" Margin="85,170,0,0" VerticalAlignment="Top" Width="280" SelectedIndex="0" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_driver" HorizontalAlignment="Left" Height="30" Margin="5,35,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_vehicle" HorizontalAlignment="Left" Height="30" Margin="5,70,0,0" TextWrapping="Wrap" Text="Vehicle" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_driverName" HorizontalAlignment="Left" Height="30" Margin="85,35,0,0" TextWrapping="Wrap" Text="{x:Bind evaluation.driverName}" VerticalAlignment="Top" Width="135" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_vehicleName" HorizontalAlignment="Left" Height="30" Margin="85,70,0,0" TextWrapping="Wrap" Text="{x:Bind evaluation.vehicleName}" VerticalAlignment="Top" Width="135" Grid.Column="1"/>
         <RelativePanel HorizontalAlignment="Left" Height="165" Margin="415,250,0,0" VerticalAlignment="Top" Width="525" Grid.Column="1">
             <TextBlock x:Name="textBlock_rating" Width="100" Text="Rating:" Margin="0,10,0,1.2"/>
             <TextBlock x:Name="textBlock_ratingText" HorizontalAlignment="Left" Height="40" Margin="105,10,-352.6,-34.8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="310"/>
             <TextBlock x:Name="textBlock_commentText" HorizontalAlignment="Left" Height="90" Margin="10,75,-452.6,-143.4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="505"/>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Comment:" VerticalAlignment="Top" Width="75" Margin="10,50,-22.6,-50"/>
-
         </RelativePanel>
+        <ListBox x:Name="listBox_surveyQuestions" HorizontalAlignment="Left" Height="355" Margin="85,170,0,0" VerticalAlignment="Top" Width="280" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged"/>
+        <TextBlock x:Name="textBlock_driver" HorizontalAlignment="Left" Height="30" Margin="5,35,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <TextBlock x:Name="textBlock_vehicle" HorizontalAlignment="Left" Height="30" Margin="5,70,0,0" TextWrapping="Wrap" Text="Vehicle" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <TextBlock x:Name="textBlock_driverName" HorizontalAlignment="Left" Height="30" Margin="85,35,0,0" TextWrapping="Wrap" Text="{x:Bind evaluation.driverName}" VerticalAlignment="Top" Width="135" Grid.Column="1"/>
+        <TextBlock x:Name="textBlock_vehicleName" HorizontalAlignment="Left" Height="30" Margin="85,70,0,0" TextWrapping="Wrap" Text="{x:Bind evaluation.vehicleName}" VerticalAlignment="Top" Width="135" Grid.Column="1"/>
 
     </Grid>
 </Page>

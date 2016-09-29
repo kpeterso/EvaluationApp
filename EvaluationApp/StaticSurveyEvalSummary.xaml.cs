@@ -52,7 +52,6 @@ namespace EvaluationApp
         {
             Survey survey = Survey.findSurvey(surveyName);
             questionList = new ObservableCollection<surveyQuestion>(survey.surveyQuestionList);
-
         }
 
         private void listBox_surveyQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
