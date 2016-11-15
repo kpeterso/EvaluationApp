@@ -129,8 +129,16 @@ namespace EvaluationApp
             this.evalID = e.evalID;
             this.surveyName = e.surveyName;
 
-            this.observationList = new ObservableCollection<Observation>(e.observationList);
-            this.surveyResponseList = new ObservableCollection<SurveyResponse>(e.surveyResponseList);
+            if(e.observationList != null)
+            {
+                this.observationList = new ObservableCollection<Observation>(e.observationList);
+            }
+            
+
+            if (e.surveyResponseList != null)
+            {
+                this.surveyResponseList = new ObservableCollection<SurveyResponse>(e.surveyResponseList);
+            }
         }
 
         public void addObservation(Observation obs)
