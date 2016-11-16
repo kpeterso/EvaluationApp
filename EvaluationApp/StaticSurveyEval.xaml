@@ -8,17 +8,23 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <RelativePanel HorizontalAlignment="Left" Height="165" Margin="415,250,0,0" VerticalAlignment="Top" Width="525" Grid.Column="1">
-            <TextBlock x:Name="textBlock_rating" Width="100" Text="Rating:" Margin="0,10,0,1.2"/>
-            <TextBlock x:Name="textBlock_ratingText" HorizontalAlignment="Left" Height="40" Margin="105,10,-352.6,-34.8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="310"/>
-            <TextBlock x:Name="textBlock_commentText" HorizontalAlignment="Left" Height="90" Margin="10,75,-452.6,-143.4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="505"/>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Comment:" VerticalAlignment="Top" Width="75" Margin="10,50,-22.6,-50"/>
-        </RelativePanel>
-        <ListBox x:Name="listBox_surveyQuestions" HorizontalAlignment="Left" Height="355" Margin="85,170,0,0" VerticalAlignment="Top" Width="280" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged"/>
-        <TextBlock x:Name="textBlock_driver" HorizontalAlignment="Left" Height="30" Margin="5,35,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_vehicle" HorizontalAlignment="Left" Height="30" Margin="5,70,0,0" TextWrapping="Wrap" Text="Vehicle" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_driverName" HorizontalAlignment="Left" Height="30" Margin="85,35,0,0" TextWrapping="Wrap" Text="{x:Bind evaluation.driverName}" VerticalAlignment="Top" Width="135" Grid.Column="1"/>
-        <TextBlock x:Name="textBlock_vehicleName" HorizontalAlignment="Left" Height="30" Margin="85,70,0,0" TextWrapping="Wrap" Text="{x:Bind evaluation.vehicleName}" VerticalAlignment="Top" Width="135" Grid.Column="1"/>
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="85,115,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="10,115,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
+        <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
+        <ListView x:Name="listView_Observations" Background="{ThemeResource ListViewItemPlaceholderBackground}" HorizontalAlignment="Left" Height="145" Margin="675,145,0,0" VerticalAlignment="Top" Width="285" ItemsSource="{x:Bind oList}" SelectionMode="None"/>
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="255" Margin="10,295,0,0" VerticalAlignment="Top" Width="1004">
+            <ListBox x:Name="listBox_surveyQuestions" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged" VerticalAlignment="Stretch" Width="300"/>
+            <TextBox x:Name="textBox_comment" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="470" Margin="10,0,0,0.2"/>
+            <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Width="225" Click="StartVoiceRecognition_Click"/>
+        </StackPanel>
+        <Button x:Name="SubmitObservationButton" Content="Submit Observation" HorizontalAlignment="Left" VerticalAlignment="Top" Click="SubmitObservationButton_Click" Margin="360,575,0,0" Height="55" Width="270"/>
+        <TextBox x:Name="textBox_title" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" Text="Survey Evaluation" VerticalAlignment="Top" Width="290" FontWeight="Bold" FontSize="24" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"/>
+        <TextBlock x:Name="textBlock_observationHeader" HorizontalAlignment="Left" Height="20" Margin="675,115,0,0" TextWrapping="Wrap" Text="Observations:" VerticalAlignment="Top" Width="175"/>
+        <TextBlock x:Name="textBlock_Make" HorizontalAlignment="Left" Height="20" Margin="10,230,0,0" TextWrapping="Wrap" Text="Model" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"/>
+        <TextBlock x:Name="textBlock_Model" HorizontalAlignment="Left" Height="20" Margin="10,205,0,0" TextWrapping="Wrap" Text="Make" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
+        <TextBlock x:Name="textBlock_MakeText" HorizontalAlignment="Left" Height="20" Margin="70,205,0,0" TextWrapping="Wrap" Text="Infiniti" VerticalAlignment="Top" Width="85"/>
+        <TextBlock x:Name="textBlock_ModelText" HorizontalAlignment="Left" Height="20" Margin="70,230,0,0" TextWrapping="Wrap" Text="Q50" VerticalAlignment="Top" Width="85" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
+        <Button x:Name="button_EndEval" Content="Submit Evaluation" HorizontalAlignment="Left" Height="60" Margin="765,10,0,0" VerticalAlignment="Top" Width="235" Click="button_EndEval_Click"/>
 
     </Grid>
 </Page>
