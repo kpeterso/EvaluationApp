@@ -25,15 +25,16 @@ namespace EvaluationApp
         private MainPage rootPage;
 
         private SpeechRecognizer speechRecognizer;
-        private ObservableCollection<Observation> oList;
+        private ObservableCollection<SurveyResponse> surveyResponseList;
         private string surveyName;
+        private int currentQuestion=0;
 
         ObservableCollection<surveyQuestion> questionList;
 
         public StaticSurveyEval()
         {
             this.InitializeComponent();
-            oList = new ObservableCollection<Observation>();
+            surveyResponseList = new ObservableCollection<SurveyResponse>();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -51,36 +52,53 @@ namespace EvaluationApp
 
         private void initSurvey()
         {
+            //TODO: Add survey selection screen, access survey name as parameter
             surveyName = "Test Survey";
             Survey survey = Survey.findSurvey(surveyName);
             questionList = new ObservableCollection<surveyQuestion>(survey.surveyQuestionList);
-        }
+            for (int i = 0; i < questionList.Count; i++)
+            {
+                SurveyResponse s = new SurveyResponse();
+                s.questionNumber = i;
+                s.comment = "";
+                s.rating = 0;
+                surveyResponseList.Add(s);
+            }
 
+            updateScreen();
+        }
 
         private void listBox_surveyQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedResponse = evaluation.surveyResponseList.ElementAt(listBox_surveyQuestions.SelectedIndex);
-            textBox_comment.Text = selectedResponse.comment;
+            updateCurrentResponse();
+            currentQuestion = listBox_surveyQuestions.SelectedIndex;
+            updateScreen();
+            
             //textBlock_ratingText.Text = selectedResponse.rating.ToString();
         }
 
-        private void SubmitObservationButton_Click(object sender, RoutedEventArgs e)
+        private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            var comment = textBox_comment.Text;
-            string timestamp = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
-            Observation obs = new EvaluationApp.Observation() { comment = comment, timestamp = timestamp };
-            oList.Add(obs);
-            textBox_comment.Text = "";
+            updateCurrentResponse();
+
+            currentQuestion++;
+            if (currentQuestion == questionList.Count)
+            {
+                currentQuestion = 0;
+            }
+
+            updateScreen();
+            listBox_surveyQuestions.SelectedIndex = currentQuestion;
         }
 
         private void button_EndEval_Click(object sender, RoutedEventArgs e)
         {
             string driver = textBox_name.Text;
             string vehicle = textBlock_MakeText.Text + " " + textBlock_ModelText.Text;
-            string type = "Static Evaluation";
+            string type = "Static Survey Evaluation";
             string ts = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
 
-            evaluation = new Evaluation(driver, vehicle, type, null, ts, oList);
+            Evaluation evaluation = new Evaluation(driver, vehicle, type, "Test Survey", ts, surveyResponseList);
             Evaluation.evaluationList.Add(evaluation);
 
             Frame rootFrame = Window.Current.Content as Frame;
@@ -96,6 +114,22 @@ namespace EvaluationApp
 
             //Put recognition result in commentTextBlock
             textBox_comment.Text = textBoxText + " " + speechRecognitionResult.Text;
+        }
+
+        private void updateCurrentResponse()
+        {
+            //Save text in textBox_comment into surveyResponse array
+            string timestamp = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
+            surveyResponseList.ElementAt(currentQuestion).comment = textBox_comment.Text;
+            surveyResponseList.ElementAt(currentQuestion).timestamp = timestamp;
+        }
+
+        private void updateScreen()
+        {
+            //updateScreen screen elements to reflect current question
+            SurveyQuestion_TextBlock.Text = questionList.ElementAt(currentQuestion).questionText;
+            textBox_comment.Text = surveyResponseList.ElementAt(currentQuestion).comment;
+            
         }
     }
 }

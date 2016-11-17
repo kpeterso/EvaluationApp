@@ -25,7 +25,7 @@ namespace EvaluationApp
 
         private string ID;
         private Evaluation evaluation;
-        private ObservableCollection<Observation> oList;
+        private ObservableCollection<SurveyResponse> sList;
         private string surveyName;
 
         ObservableCollection<surveyQuestion> questionList;
@@ -71,7 +71,7 @@ namespace EvaluationApp
                     break;
                 }
             }
-            oList = new ObservableCollection<Observation>(evaluation.observationList);
+            sList = new ObservableCollection<SurveyResponse>(evaluation.surveyResponseList);
             surveyName = evaluation.surveyName;
         }
     }

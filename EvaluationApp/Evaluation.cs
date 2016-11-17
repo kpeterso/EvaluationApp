@@ -58,11 +58,11 @@ namespace EvaluationApp
                 foreach (var r in res)
                 {
                     string id = r.SelectSingleNode("descendant::questionid").InnerText;
-                    uint y = 0;
-                    uint.TryParse(id, out y);
+                    int y = 0;
+                    int.TryParse(id, out y);
                     string rate = r.SelectSingleNode("descendant::rating").InnerText;
-                    ulong x = 0;
-                    ulong.TryParse(rate, out x);
+                    int x = 0;
+                    int.TryParse(rate, out x);
                     string c = r.SelectSingleNode("descendant::comment").InnerText;
                     string ts = r.SelectSingleNode("descendant::timestamp").InnerText;
                     SurveyResponse surveyResponse = new SurveyResponse { questionNumber = y, rating = x, comment = c, timestamp = ts };
@@ -197,8 +197,8 @@ namespace EvaluationApp
 
     public class SurveyResponse
     {
-        public uint questionNumber { get; set; }
-        public ulong rating;
+        public int questionNumber { get; set; }
+        public int rating;
         public string comment { get; set; }
         public string timestamp { get; set; }
         //public gpsTag geoTag; //Store location observation was made
