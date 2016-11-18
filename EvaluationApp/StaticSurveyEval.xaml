@@ -7,31 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="350,45,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="350,23,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
-        <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="570,23,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
-        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="160" Margin="10,390,0,0" VerticalAlignment="Top" Width="1004">
-            <ListBox x:Name="listBox_surveyQuestions" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged" VerticalAlignment="Stretch" Width="300"/>
-            <TextBox x:Name="textBox_comment" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="470" Margin="10,0,0,0.2"/>
-            <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Width="225" Click="StartVoiceRecognition_Click"/>
-        </StackPanel>
-        <Button x:Name="SubmitObservationButton" Content="Next" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NextButton_Click" Margin="360,575,0,0" Height="55" Width="270" FontSize="20"/>
-        <TextBox x:Name="textBox_title" HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" Text="Survey Evaluation" VerticalAlignment="Top" Width="290" FontWeight="Bold" FontSize="24" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None"/>
-        <TextBlock x:Name="textBlock_Make" HorizontalAlignment="Left" Height="20" Margin="570,80,0,0" TextWrapping="Wrap" Text="Model" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"/>
-        <TextBlock x:Name="textBlock_Model" HorizontalAlignment="Left" Height="20" Margin="570,55,0,0" TextWrapping="Wrap" Text="Make" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
-        <TextBlock x:Name="textBlock_MakeText" HorizontalAlignment="Left" Height="20" Margin="630,55,0,0" TextWrapping="Wrap" Text="Infiniti" VerticalAlignment="Top" Width="85"/>
-        <TextBlock x:Name="textBlock_ModelText" HorizontalAlignment="Left" Height="20" Margin="630,80,0,0" TextWrapping="Wrap" Text="Q50" VerticalAlignment="Top" Width="85" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
-        <Button x:Name="button_EndEval" Content="Submit Evaluation" HorizontalAlignment="Left" Height="60" Margin="765,10,0,0" VerticalAlignment="Top" Width="235" Click="button_EndEval_Click"/>
-        <TextBlock x:Name="SurveyQuestion_TextBlock" HorizontalAlignment="Left" Height="120" Margin="35,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="915" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" FontSize="36" TextAlignment="Center"/>
-        <Pivot x:Name="Pivot_Thumbs" HorizontalAlignment="Left" Height="109" Margin="360,261,0,0" Title="Pivot" VerticalAlignment="Top" Width="325" SelectionChanged="Pivot_Thumbs_SelectionChanged" SelectedIndex="-1">
-            <PivotItem Header="Thumbs Up">
-                <Grid/>
-            </PivotItem>
-            <PivotItem Header="Thumbs Down">
-                <Grid/>
-            </PivotItem>
-        </Pivot>
+    <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="250">
+        <SplitView.Pane>
+            <StackPanel Background="Gray">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+                <ListBox x:Name="listBox_surveyQuestions" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged" Height="221" HorizontalAlignment="Right" Width="192" Margin="0,0,8.4,0"/>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="110,29,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="40,29,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
+                <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="360,23,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
+                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="160" Margin="0,370,0,0" VerticalAlignment="Top" Width="964">
+                    <TextBox x:Name="textBox_comment" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="729" Margin="10,0,0,0"/>
+                    <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Width="225" Click="StartVoiceRecognition_Click"/>
+                </StackPanel>
+                <Button x:Name="SubmitObservationButton" Content="Next" HorizontalAlignment="Left" VerticalAlignment="Top" Click="NextButton_Click" Margin="10,535,0,0" Height="95" Width="954" FontSize="20"/>
+                <TextBlock x:Name="textBlock_Make" HorizontalAlignment="Left" Height="20" Margin="535,54,0,0" TextWrapping="Wrap" Text="Model" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"/>
+                <TextBlock x:Name="textBlock_Model" HorizontalAlignment="Left" Height="20" Margin="535,29,0,0" TextWrapping="Wrap" Text="Make" VerticalAlignment="Top" Width="55" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
+                <TextBlock x:Name="textBlock_MakeText" HorizontalAlignment="Left" Height="20" Margin="595,29,0,0" TextWrapping="Wrap" Text="Infiniti" VerticalAlignment="Top" Width="85"/>
+                <TextBlock x:Name="textBlock_ModelText" HorizontalAlignment="Left" Height="20" Margin="595,54,0,0" TextWrapping="Wrap" Text="Q50" VerticalAlignment="Top" Width="85" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
+                <Button x:Name="button_EndEval" Content="Submit Evaluation" HorizontalAlignment="Left" Height="60" Margin="804,10,0,0" VerticalAlignment="Top" Width="160" Click="button_EndEval_Click"/>
+                <TextBlock x:Name="SurveyQuestion_TextBlock" HorizontalAlignment="Left" Height="120" Margin="35,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="915" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" FontSize="36" TextAlignment="Center"/>
+                <Pivot x:Name="Pivot_Thumbs" HorizontalAlignment="Left" Height="109" Margin="340,245,0,0" VerticalAlignment="Top" Width="320" SelectionChanged="Pivot_Thumbs_SelectionChanged" SelectedIndex="0">
+                    <PivotItem Header="Thumbs Up">
+                        <Grid/>
+                    </PivotItem>
+                    <PivotItem Header="Thumbs Down">
+                        <Grid/>
+                    </PivotItem>
+                </Pivot>
 
-    </Grid>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
 </Page>
