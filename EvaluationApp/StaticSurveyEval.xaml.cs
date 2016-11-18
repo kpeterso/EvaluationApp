@@ -121,6 +121,7 @@ namespace EvaluationApp
             //Save text in textBox_comment into surveyResponse array
             string timestamp = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.ff");
             surveyResponseList.ElementAt(currentQuestion).comment = textBox_comment.Text;
+            //surveyResponseList.ElementAt(currentQuestion).rating = Pivot_Thumbs.SelectedIndex;
             surveyResponseList.ElementAt(currentQuestion).timestamp = timestamp;
         }
 
@@ -129,7 +130,12 @@ namespace EvaluationApp
             //updateScreen screen elements to reflect current question
             SurveyQuestion_TextBlock.Text = questionList.ElementAt(currentQuestion).questionText;
             textBox_comment.Text = surveyResponseList.ElementAt(currentQuestion).comment;
-            
+            Pivot_Thumbs.SelectedIndex = surveyResponseList.ElementAt(currentQuestion).rating;
+        }
+
+        private void Pivot_Thumbs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            surveyResponseList.ElementAt(currentQuestion).rating = Pivot_Thumbs.SelectedIndex;
         }
     }
 }

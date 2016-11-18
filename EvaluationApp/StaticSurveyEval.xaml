@@ -11,7 +11,7 @@
         <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="350,45,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="350,23,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
         <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="570,23,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
-        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="255" Margin="10,295,0,0" VerticalAlignment="Top" Width="1004">
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="160" Margin="10,390,0,0" VerticalAlignment="Top" Width="1004">
             <ListBox x:Name="listBox_surveyQuestions" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged" VerticalAlignment="Stretch" Width="300"/>
             <TextBox x:Name="textBox_comment" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="470" Margin="10,0,0,0.2"/>
             <Button x:Name="VoiceToTextButton" Content="Voice" VerticalAlignment="Stretch" Width="225" Click="StartVoiceRecognition_Click"/>
@@ -24,6 +24,14 @@
         <TextBlock x:Name="textBlock_ModelText" HorizontalAlignment="Left" Height="20" Margin="630,80,0,0" TextWrapping="Wrap" Text="Q50" VerticalAlignment="Top" Width="85" ManipulationMode="None" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False"/>
         <Button x:Name="button_EndEval" Content="Submit Evaluation" HorizontalAlignment="Left" Height="60" Margin="765,10,0,0" VerticalAlignment="Top" Width="235" Click="button_EndEval_Click"/>
         <TextBlock x:Name="SurveyQuestion_TextBlock" HorizontalAlignment="Left" Height="120" Margin="35,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="915" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" FontSize="36" TextAlignment="Center"/>
+        <Pivot x:Name="Pivot_Thumbs" HorizontalAlignment="Left" Height="109" Margin="360,261,0,0" Title="Pivot" VerticalAlignment="Top" Width="325" SelectionChanged="Pivot_Thumbs_SelectionChanged" SelectedIndex="-1">
+            <PivotItem Header="Thumbs Up">
+                <Grid/>
+            </PivotItem>
+            <PivotItem Header="Thumbs Down">
+                <Grid/>
+            </PivotItem>
+        </Pivot>
 
     </Grid>
 </Page>
