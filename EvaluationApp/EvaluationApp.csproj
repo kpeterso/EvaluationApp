@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DynamicEval.xaml.cs">
+      <DependentUpon>DynamicEval.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Evaluation.cs" />
     <Compile Include="EvalDisplay.xaml.cs">
       <DependentUpon>EvalDisplay.xaml</DependentUpon>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DynamicEval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EvalDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

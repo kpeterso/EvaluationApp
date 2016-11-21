@@ -28,7 +28,7 @@ namespace EvaluationApp
             new Scenario() { Title = "Display List of Evaluations", ClassType = typeof(EvaluationApp.EvalDisplay) },
             new Scenario() { Title = "Create New Static Evaluation", ClassType = typeof(EvaluationApp.StaticEval) },
             new Scenario() { Title = "Create New Survey Evaluation", ClassType = typeof(EvaluationApp.StaticSurveyEval) },
-            // new Scenario() { Title = "XPath Query", ClassType = typeof(EvaluationApp.GiftDispatch) },
+            new Scenario() { Title = "Create Dynamic Survey", ClassType = typeof(EvaluationApp.DynamicEval) },
             // new Scenario() { Title = "XSLT Transformation", ClassType = typeof(EvaluationApp.XSLTTransform) }
         };
 
