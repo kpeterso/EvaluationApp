@@ -10,13 +10,13 @@
     <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="250">
         <SplitView.Pane>
             <StackPanel Background="Gray">
-                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click" HorizontalAlignment="Right" Margin="0,0,200.4,0"/>
                 <ListBox x:Name="listBox_surveyQuestions" ItemsSource="{x:Bind questionList}" SelectionChanged="listBox_surveyQuestions_SelectionChanged" Height="221" HorizontalAlignment="Right" Width="192" Margin="0,0,8.4,0"/>
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="110,29,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
+                <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="17" Margin="110,23,0,0" TextWrapping="Wrap" Text="Karl Peterson" VerticalAlignment="Top" Width="155"/>
                 <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="17" Margin="40,29,0,0" TextWrapping="Wrap" Text="Evaluator" VerticalAlignment="Top" Width="70"/>
                 <TextBox x:Name="textBox_vehicleinfo" HorizontalAlignment="Left" Margin="360,23,0,0" TextWrapping="Wrap" Text="Vehicle Information" VerticalAlignment="Top" RenderTransformOrigin="-5.068,0.475"/>
                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Height="160" Margin="0,370,0,0" VerticalAlignment="Top" Width="964">
