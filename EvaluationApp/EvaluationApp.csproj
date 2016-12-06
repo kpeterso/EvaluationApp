@@ -90,6 +90,20 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\AccessSQLService\EvaluationApp.AccessSQLService.Article.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccessSQLService\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccessSQLService\Service1.wsdl" />
+    <None Include="Service References\AccessSQLService\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccessSQLService\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -107,6 +121,11 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AccessSQLService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="StaticEval.xaml.cs">
       <DependentUpon>StaticEval.xaml</DependentUpon>
     </Compile>
@@ -139,6 +158,13 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Include="Service References\AccessSQLService\Service.disco" />
+    <None Include="Service References\AccessSQLService\configuration91.svcinfo" />
+    <None Include="Service References\AccessSQLService\configuration.svcinfo" />
+    <None Include="Service References\AccessSQLService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Surveys\Survey1.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +204,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccessSQLService\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

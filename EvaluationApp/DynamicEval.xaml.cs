@@ -63,7 +63,7 @@ namespace EvaluationApp
                     Latitude = 32.9492892,
                     Longitude = -111.9956382
                 });
-            MyMap.ZoomLevel = 12;
+            MyMap.ZoomLevel = 15;
         }
 
     }
