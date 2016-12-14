@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EvaluationApp.AccessSQLService;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -85,25 +86,29 @@ namespace EvaluationApp
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
 
-            initXml();
+            initEvalListFromSQLServer();
         }
 
-        private async void initXml()
+        private async void initEvalListFromSQLServer()
         {
-            //Load Evaluations and Surveys from XML files, load into static lists
+            IList<EvalQuery> articleList = null;
+            //Load Evaluations and Surveys from SQL Server, load into static lists
             try
             {
-                XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
-                Evaluation.evaluationDoc = doc;
-
-                doc = await Evaluation.LoadXmlFile("Surveys", "Survey1.xml");
-                Survey.surveyDoc = doc;
+                ServiceClient client = new ServiceClient();
+                articleList = await client.QueryArticleAsync();
             }
-            catch (Exception exp)
+            catch (Exception ex)
             {
+                //NotifyUser(ex.Message);
             }
 
-            var evaluations = Evaluation.evaluationDoc.SelectNodes("descendant::evaluation");
+            foreach (EvalQuery E in articleList)
+            {
+                Evaluation eval = new Evaluation(E.EvalID, E.Vehicle, E.EvalType);
+                Evaluation.evaluationList.Add(eval);
+            }
+            /*var evaluations = Evaluation.evaluationDoc.SelectNodes("descendant::evaluation");
             foreach (IXmlNode evaluation in evaluations)
             {
                 Evaluation eval = new Evaluation(evaluation);
@@ -115,8 +120,9 @@ namespace EvaluationApp
             {
                 Survey s = new Survey(survey);
                 Survey.surveyList.Add(s);
-            }
+            }*/
         }
+
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails
@@ -162,6 +168,36 @@ namespace EvaluationApp
             //Each time Navigation occurs, update Back button visibility
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
+
+        /*private async void initXml()
+        {
+            //Load Evaluations and Surveys from XML files, load into static lists
+            try
+            {
+                XmlDocument doc = await Evaluation.LoadXmlFile("EvaluationXml", "Evaluations.xml");
+                Evaluation.evaluationDoc = doc;
+
+                doc = await Evaluation.LoadXmlFile("Surveys", "Survey1.xml");
+                Survey.surveyDoc = doc;
+            }
+            catch (Exception exp)
+            {
+            }
+
+            var evaluations = Evaluation.evaluationDoc.SelectNodes("descendant::evaluation");
+            foreach (IXmlNode evaluation in evaluations)
+            {
+                Evaluation eval = new Evaluation(evaluation);
+                Evaluation.evaluationList.Add(eval);
+            }
+
+            var surveys = Survey.surveyDoc.SelectNodes("descendant::survey");
+            foreach (IXmlNode survey in surveys)
+            {
+                Survey s = new Survey(survey);
+                Survey.surveyList.Add(s);
+            }
+        }*/
 
     }
 }

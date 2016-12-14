@@ -10,11 +10,10 @@ namespace EvaluationApp
 {
     public class Evaluation
     {
-        public static XmlDocument evaluationDoc { get; set; }
+        //public static XmlDocument evaluationDoc { get; set; }
         public static ObservableCollection<Evaluation> evaluationList = new ObservableCollection<Evaluation>();
-        private static int maxID { get; set; }
 
-        public string evalID { get; set; }
+        public Guid evalID { get; set; }
         public string driverName { get; set; }
         public string vehicleName { get; set; }
         public string evalType { get; set; }    //Name of Evaluation Template
@@ -22,9 +21,127 @@ namespace EvaluationApp
         public string surveyName { get; set; }  //name of associated survey
         public ObservableCollection<Observation> observationList;   //Stores list of Observations
         public ObservableCollection<SurveyResponse> surveyResponseList; //Stores list of survey responses
-        //public List<gpsTag> gpsRoute; //Store list of gps tags that made up route
 
-        public Evaluation(IXmlNode evaluation)
+        //initialize without a survey
+        public Evaluation(string id, string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = new Guid(id);
+            this.surveyName = surveyName;
+
+            this.observationList = new ObservableCollection<Observation>(obsList);
+            this.surveyResponseList = null; //new ObservableCollection<SurveyResponse>();
+        }
+
+        public Evaluation(string id, string driver, string vehicle, string type, string surveyName, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = new Guid(id);
+            this.surveyName = surveyName;
+
+            this.observationList = new ObservableCollection<Observation>(obsList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string surveyName, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = Guid.NewGuid();
+            this.surveyName = surveyName;
+            
+            this.observationList = new ObservableCollection<Observation>(obsList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string surveyName, string timestamp, ObservableCollection<Observation> obsList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = Guid.NewGuid();
+            this.surveyName = surveyName;
+
+            this.observationList = new ObservableCollection<Observation>(obsList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>();
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string surveyName, string timestamp, ObservableCollection<SurveyResponse> srList)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = Guid.NewGuid();
+            this.surveyName = surveyName;
+
+            this.observationList = new ObservableCollection<Observation>();
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string surveyName, string timestamp)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = Guid.NewGuid();
+            this.surveyName = surveyName;
+
+            this.observationList = new ObservableCollection<Observation>();
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>();
+        }
+
+        public Evaluation(string driver, string vehicle, string type, string timestamp)
+        {
+            this.driverName = driver;
+            this.vehicleName = vehicle;
+            this.evalType = type;
+            this.submitDate = timestamp;
+            this.evalID = Guid.NewGuid();
+            this.surveyName = null;
+
+            this.observationList = new ObservableCollection<Observation>();
+            this.surveyResponseList = null; // new ObservableCollection<SurveyResponse>();
+        }
+
+        public Evaluation(Evaluation e)
+        {
+            this.driverName = e.driverName;
+            this.vehicleName = e.vehicleName;
+            this.evalType = e.evalType;
+            this.submitDate = e.submitDate;
+            this.evalID = e.evalID;
+            this.surveyName = e.surveyName;
+            this.observationList = new ObservableCollection<Observation>(e.observationList);
+            this.surveyResponseList = new ObservableCollection<SurveyResponse>(e.surveyResponseList);
+        }
+
+        public void addObservation(Observation obs)
+        {
+            this.observationList.Add(obs);
+        }
+
+        public void addSurveyResponse(SurveyResponse sr)
+        {
+            this.surveyResponseList.Add(sr);
+        }
+
+        public override string ToString()
+        {
+            return evalType;
+        }
+
+        /*public Evaluation(IXmlNode evaluation)
         {
             //imports the XML data into the Evaluation object that calls it.
             this.evalID = evaluation.SelectSingleNode("descendant::evalID").InnerText;
@@ -76,77 +193,9 @@ namespace EvaluationApp
             {
                 maxID = ID;
             }
-        }
-        
-        public Evaluation(string driver, string vehicle, string type, string sName, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
-        {
-            this.driverName = driver;
-            this.vehicleName = vehicle;
-            this.evalType = type;
-            this.submitDate = timestamp;
-            maxID++;
-            this.evalID = maxID.ToString();
-            this.surveyName = sName;
-            
-            this.observationList = new ObservableCollection<Observation>(obsList);
-            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
-        }
+        }*/
 
-        public Evaluation(string driver, string vehicle, string type, string sName, string timestamp, ObservableCollection<Observation> obsList)
-        {
-            this.driverName = driver;
-            this.vehicleName = vehicle;
-            this.evalType = type;
-            this.submitDate = timestamp;
-            maxID++;
-            this.evalID = maxID.ToString();
-            this.surveyName = sName;
-
-            this.observationList = new ObservableCollection<Observation>(obsList);
-            //this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
-        }
-
-        public Evaluation(string driver, string vehicle, string type, string sName, string timestamp, ObservableCollection<SurveyResponse> srList)
-        {
-            this.driverName = driver;
-            this.vehicleName = vehicle;
-            this.evalType = type;
-            this.submitDate = timestamp;
-            maxID++;
-            this.evalID = maxID.ToString();
-            this.surveyName = sName;
-
-            //this.observationList = new ObservableCollection<Observation>(obsList);
-            this.surveyResponseList = new ObservableCollection<SurveyResponse>(srList);
-        }
-
-        public Evaluation(Evaluation e)
-        {
-            this.driverName = e.driverName;
-            this.vehicleName = e.vehicleName;
-            this.evalType = e.evalType;
-            this.submitDate = e.submitDate;
-            this.evalID = e.evalID;
-            this.surveyName = e.surveyName;
-
-            if(e.observationList != null)
-            {
-                this.observationList = new ObservableCollection<Observation>(e.observationList);
-            }
-            
-
-            if (e.surveyResponseList != null)
-            {
-                this.surveyResponseList = new ObservableCollection<SurveyResponse>(e.surveyResponseList);
-            }
-        }
-
-        public void addObservation(Observation obs)
-        {
-            this.observationList.Add(obs);
-        }
-
-        public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
+        /*public static async Task<XmlDocument> LoadXmlFile(String folder, String file)
         {
             //opens an XML file and returns an XmlDocument object
             Windows.Storage.StorageFolder storageFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(folder);
@@ -155,9 +204,9 @@ namespace EvaluationApp
             loadSettings.ProhibitDtd = false;
             loadSettings.ResolveExternals = false;
             return await XmlDocument.LoadFromFileAsync(storageFile, loadSettings);
-        }
+        }*/
 
-        public void AddEvaluation(Evaluation eval)
+        /*public void AddEvaluation(Evaluation eval)
         {
             //Create the Evaluation element
             XmlElement newEval = evaluationDoc.CreateElement("Evaluation");
@@ -178,12 +227,8 @@ namespace EvaluationApp
             element = evaluationDoc.CreateElement("timestamp");
             element.InnerText = eval.submitDate;
             newEval.AppendChild(element);
-        }
+        }*/
 
-        public override string ToString()
-        {
-            return evalType;
-        }
     }
 
     public class Observation

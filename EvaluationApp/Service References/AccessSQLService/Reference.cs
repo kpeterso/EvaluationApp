@@ -18,34 +18,34 @@ namespace EvaluationApp.AccessSQLService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Article", Namespace="http://schemas.datacontract.org/2004/07/AccessSQLService.Model")]
-    public partial class Article : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class EvalQuery : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string TextField;
+        private string EvalIDField;
         
-        private string TitleField;
+        private string EvalNumField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Text {
+        public string EvalID {
             get {
-                return this.TextField;
+                return this.EvalIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.TextField, value) != true)) {
-                    this.TextField = value;
-                    this.RaisePropertyChanged("Text");
+                if ((object.ReferenceEquals(this.EvalIDField, value) != true)) {
+                    this.EvalIDField = value;
+                    this.RaisePropertyChanged("EvalID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Title {
+        public string EvalNum {
             get {
-                return this.TitleField;
+                return this.EvalNumField;
             }
             set {
-                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
-                    this.TitleField = value;
-                    this.RaisePropertyChanged("Title");
+                if ((object.ReferenceEquals(this.EvalNumField, value) != true)) {
+                    this.EvalNumField = value;
+                    this.RaisePropertyChanged("EvalNum");
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace EvaluationApp.AccessSQLService {
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/QueryArticle", ReplyAction="http://tempuri.org/IService/QueryArticleResponse")]
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<EvaluationApp.AccessSQLService.Article>> QueryArticleAsync();
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<EvaluationApp.AccessSQLService.EvalQuery>> QueryArticleAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,7 +111,7 @@ namespace EvaluationApp.AccessSQLService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<EvaluationApp.AccessSQLService.Article>> QueryArticleAsync() {
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<EvaluationApp.AccessSQLService.EvalQuery>> QueryArticleAsync() {
             return base.Channel.QueryArticleAsync();
         }
         
