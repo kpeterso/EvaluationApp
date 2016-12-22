@@ -22,20 +22,6 @@ namespace EvaluationApp
         public ObservableCollection<Observation> observationList;   //Stores list of Observations
         public ObservableCollection<SurveyResponse> surveyResponseList; //Stores list of survey responses
 
-        //initialize without a survey
-        public Evaluation(string id, string driver, string vehicle, string type, string timestamp, ObservableCollection<Observation> obsList)
-        {
-            this.driverName = driver;
-            this.vehicleName = vehicle;
-            this.evalType = type;
-            this.submitDate = timestamp;
-            this.evalID = new Guid(id);
-            this.surveyName = surveyName;
-
-            this.observationList = new ObservableCollection<Observation>(obsList);
-            this.surveyResponseList = null; //new ObservableCollection<SurveyResponse>();
-        }
-
         public Evaluation(string id, string driver, string vehicle, string type, string surveyName, string timestamp, ObservableCollection<Observation> obsList, ObservableCollection<SurveyResponse> srList)
         {
             this.driverName = driver;
